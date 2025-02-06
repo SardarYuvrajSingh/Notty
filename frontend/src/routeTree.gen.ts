@@ -16,30 +16,30 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const TableLazyImport = createFileRoute('/table')()
-const PtableLazyImport = createFileRoute('/ptable')()
-const ChartsLazyImport = createFileRoute('/charts')()
+const RegisterLazyImport = createFileRoute('/register')()
+const LoginLazyImport = createFileRoute('/login')()
+const ListLazyImport = createFileRoute('/list')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const TableLazyRoute = TableLazyImport.update({
-  id: '/table',
-  path: '/table',
+const RegisterLazyRoute = RegisterLazyImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/table.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/register.lazy').then((d) => d.Route))
 
-const PtableLazyRoute = PtableLazyImport.update({
-  id: '/ptable',
-  path: '/ptable',
+const LoginLazyRoute = LoginLazyImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/login.lazy').then((d) => d.Route))
 
-const ChartsLazyRoute = ChartsLazyImport.update({
-  id: '/charts',
-  path: '/charts',
+const ListLazyRoute = ListLazyImport.update({
+  id: '/list',
+  path: '/list',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/charts.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/list.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
@@ -58,25 +58,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/charts': {
-      id: '/charts'
-      path: '/charts'
-      fullPath: '/charts'
-      preLoaderRoute: typeof ChartsLazyImport
+    '/list': {
+      id: '/list'
+      path: '/list'
+      fullPath: '/list'
+      preLoaderRoute: typeof ListLazyImport
       parentRoute: typeof rootRoute
     }
-    '/ptable': {
-      id: '/ptable'
-      path: '/ptable'
-      fullPath: '/ptable'
-      preLoaderRoute: typeof PtableLazyImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginLazyImport
       parentRoute: typeof rootRoute
     }
-    '/table': {
-      id: '/table'
-      path: '/table'
-      fullPath: '/table'
-      preLoaderRoute: typeof TableLazyImport
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -86,47 +86,47 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/charts': typeof ChartsLazyRoute
-  '/ptable': typeof PtableLazyRoute
-  '/table': typeof TableLazyRoute
+  '/list': typeof ListLazyRoute
+  '/login': typeof LoginLazyRoute
+  '/register': typeof RegisterLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/charts': typeof ChartsLazyRoute
-  '/ptable': typeof PtableLazyRoute
-  '/table': typeof TableLazyRoute
+  '/list': typeof ListLazyRoute
+  '/login': typeof LoginLazyRoute
+  '/register': typeof RegisterLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/charts': typeof ChartsLazyRoute
-  '/ptable': typeof PtableLazyRoute
-  '/table': typeof TableLazyRoute
+  '/list': typeof ListLazyRoute
+  '/login': typeof LoginLazyRoute
+  '/register': typeof RegisterLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/charts' | '/ptable' | '/table'
+  fullPaths: '/' | '/list' | '/login' | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/charts' | '/ptable' | '/table'
-  id: '__root__' | '/' | '/charts' | '/ptable' | '/table'
+  to: '/' | '/list' | '/login' | '/register'
+  id: '__root__' | '/' | '/list' | '/login' | '/register'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  ChartsLazyRoute: typeof ChartsLazyRoute
-  PtableLazyRoute: typeof PtableLazyRoute
-  TableLazyRoute: typeof TableLazyRoute
+  ListLazyRoute: typeof ListLazyRoute
+  LoginLazyRoute: typeof LoginLazyRoute
+  RegisterLazyRoute: typeof RegisterLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  ChartsLazyRoute: ChartsLazyRoute,
-  PtableLazyRoute: PtableLazyRoute,
-  TableLazyRoute: TableLazyRoute,
+  ListLazyRoute: ListLazyRoute,
+  LoginLazyRoute: LoginLazyRoute,
+  RegisterLazyRoute: RegisterLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -140,22 +140,22 @@ export const routeTree = rootRoute
       "filePath": "__root.jsx",
       "children": [
         "/",
-        "/charts",
-        "/ptable",
-        "/table"
+        "/list",
+        "/login",
+        "/register"
       ]
     },
     "/": {
       "filePath": "index.lazy.jsx"
     },
-    "/charts": {
-      "filePath": "charts.lazy.jsx"
+    "/list": {
+      "filePath": "list.lazy.tsx"
     },
-    "/ptable": {
-      "filePath": "ptable.lazy.jsx"
+    "/login": {
+      "filePath": "login.lazy.tsx"
     },
-    "/table": {
-      "filePath": "table.lazy.jsx"
+    "/register": {
+      "filePath": "register.lazy.tsx"
     }
   }
 }

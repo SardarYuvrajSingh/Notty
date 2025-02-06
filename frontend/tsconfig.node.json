@@ -5,6 +5,8 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "jsx": "react-jsx", // Enables JSX support
+    "esModuleInterop": true, // Fix import issues
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -20,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts","frontend/src/global.d.ts" ]
 }

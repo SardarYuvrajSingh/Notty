@@ -9,6 +9,9 @@
     }
   ],
   "compilerOptions": {
+    "strictNullChecks": true,
+    "jsx": "react-jsx", // Enables JSX support
+    "esModuleInterop": true, // Fix import issues
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
